@@ -1,5 +1,6 @@
 ﻿using ModernAppliances.Entities;
 using ModernAppliances.Entities.Abstract;
+using System.Linq;
 
 namespace ModernAppliances
 {
@@ -88,7 +89,7 @@ namespace ModernAppliances
             Console.WriteLine("3 – Microwaves");
             Console.WriteLine("4 – Dishwashers");
 
-            Console.Write("Enter type of appliance:");
+            Console.WriteLine("\nEnter type of appliance:");
 
             int applianceTypeNum;
             bool parsedApplianceType = int.TryParse(Console.ReadLine(), out applianceTypeNum);
@@ -350,10 +351,33 @@ namespace ModernAppliances
         /// <param name="max">Maximum number of appliances to display (0 is unlimited)</param>
         public void DisplayAppliancesFromList(List<Appliance> appliances, int max)
         {
+
             if (appliances.Count > 0)
-            {
-                Console.WriteLine("Found appliances:");
-                Console.WriteLine();
+            {   
+                if (max  > 0)
+                {
+                    Console.WriteLine("\nRandom appliances:\n");
+                }
+                else 
+                {
+                    // Display output match based on appliance type
+                    if (appliances.All(a => a is Refrigerator))
+                    {
+                        Console.WriteLine("\nMatching refrigerators:\n");
+                    }
+                    else if (appliances.All(a => a is Vacuum))
+                    {
+                        Console.WriteLine("\nMatching vacuums:\n");
+                    }
+                    else if (appliances.All(a => a is Microwave))
+                    {
+                        Console.WriteLine("\nMatching microwaves:\n");
+                    }
+                    else 
+                    {
+                        Console.WriteLine("\nMatching Appliances:\n");
+                    }
+                }
 
                 // Display found appliances until either end of list is reached or number of appliances requested is shown.
                 for (int i = 0; i < appliances.Count && (max == 0 || i < max); i++)

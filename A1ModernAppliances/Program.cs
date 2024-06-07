@@ -15,6 +15,9 @@
             {
                 modernAppliances.DisplayMenu();
 
+                // Add option to enter menu 
+                Console.WriteLine("\nEnter option: ");
+
                 option = Enum.Parse<ModernAppliances.Options>(Console.ReadLine());
                 
                 switch (option)
@@ -50,7 +53,7 @@
                     }
                     default:
                     {
-                        Console.WriteLine("Invalid option entered. Please try again.");
+                        Console.WriteLine("Invalid option entered. Please try again.\n");
                         break;
                     }
                 }
