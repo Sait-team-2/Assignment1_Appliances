@@ -172,36 +172,52 @@ namespace ModernAppliances
         public override void DisplayMicrowaves()
         {
             // Write "Possible options:"
-
             // Write "0 - Any"
             // Write "1 - Kitchen"
             // Write "2 - Work site"
+            Console.WriteLine("Possible options:");
+            Console.WriteLine("0-Any");
+            Console.WriteLine("1-kitchen");
+            Console.WriteLine("2-work site");
 
             // Write "Enter room type:"
-
+            Console.WriteLine("Eneter room type: ");
             // Get user input as string and assign to variable
-
+            string roomType = Console.ReadLine();
             // Create character variable that holds room type
+            char roomTypeChar = roomType switch
+            {
 
-            // Test input is "0"
+
+                // Test input is "0"
                 // Assign 'A' to room type variable
-            // Test input is "1"
+                "0" => 'A',
+                // Test input is "1"
                 // Assign 'K' to room type variable
-            // Test input is "2"
+                "1" => 'K',
+                // Test input is "2"
                 // Assign 'W' to room type variable
+                "2" => 'W',
+                _=> '\0'
+            };
             // Otherwise (input is something else)
-                // Write "Invalid option."
+            // Write "Invalid option."
+            if (roomTypeChar == '\0')
+            {
+                Console.WriteLine("invalid option (◣_◢)");
                 // Return to calling method
                 // return;
-
+                return;
+            }
             // Create variable that holds list of 'found' appliances
-
+            var found = Appliances.OfType<Microwave>().Where(m => roomTypeChar == 'A'|| m.Features.Contains(roomTypechar.ToString())).ToList();
             // Loop through Appliances
-                // Test current appliance is Microwave
-                    // Down cast Appliance to Microwave
+            // Test current appliance is Microwave
+            // Down cast Appliance to Microwave
+            DisplayAppliancesFromList(found, 0);
 
-                    // Test room type equals 'A' or microwave room type
-                        // Add current appliance in list to found list
+            // Test room type equals 'A' or microwave room type
+            // Add current appliance in list to found list
 
             // Display found appliances
             // DisplayAppliancesFromList(found, 0);
@@ -213,41 +229,60 @@ namespace ModernAppliances
         public override void DisplayDishwashers()
         {
             // Write "Possible options:"
-
+            Console.WriteLine("Possible options: ");
             // Write "0 - Any"
+            Console.WriteLine("0-Any");
             // Write "1 - Quietest"
+            Console.WriteLine("1-Quietest");
             // Write "2 - Quieter"
+            Console.WriteLine("2-Quieter");
             // Write "3 - Quiet"
+            Console.WriteLine("3-Quiet");
             // Write "4 - Moderate"
+            Console.WriteLine("4-Moderate");
 
             // Write "Enter sound rating:"
-
+            Console.WriteLine("Enter sound rating");
             // Get user input as string and assign to variable
-
+            string input = Console.ReadLine();
             // Create variable that holds sound rating
-
-            // Test input is "0"
+            string soundRating = input switch
+            {
+                // Test input is "0"
+                "0" => "Any",
                 // Assign "Any" to sound rating variable
-            // Test input is "1"
+                // Test input is "1"
+                "1" => "Qt",
                 // Assign "Qt" to sound rating variable
-            // Test input is "2"
+                // Test input is "2"
+                "2" => "Qr",
                 // Assign "Qr" to sound rating variable
-            // Test input is "3"
+                // Test input is "3"
+                "3" => "Qu",
                 // Assign "Qu" to sound rating variable
-            // Test input is "4"
+                // Test input is "4"
+                "4" => "M",
                 // Assign "M" to sound rating variable
+                _ => ""
+            };
+            
             // Otherwise (input is something else)
-                // Write "Invalid option."
-                // Return to calling method
+            // Write "Invalid option."
+            // Return to calling method
+            if (string.IsNullOrEmpty(soundRating))
+            {
+                Console.WriteLine("Invalid option.");
+                return;
+            }
 
             // Create variable that holds list of found appliances
-
+            var found = Appliances.OfType<Dishwasher>().Where(d => soundRating == "Any" || d.Features.Contains(soundRating)).ToList();
             // Loop through Appliances
-                // Test if current appliance is dishwasher
-                    // Down cast current Appliance to Dishwasher
+            // Test if current appliance is dishwasher
+            // Down cast current Appliance to Dishwasher
 
-                    // Test sound rating is "Any" or equals soundrating for current dishwasher
-                        // Add current appliance in list to found list
+            // Test sound rating is "Any" or equals soundrating for current dishwasher
+            // Add current appliance in list to found list
 
             // Display found appliances (up to max. number inputted)
             // DisplayAppliancesFromList(found, 0);
