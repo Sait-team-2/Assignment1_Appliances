@@ -9,7 +9,7 @@
         /// Types of appliances
         /// </summary>
         public enum ApplianceTypes
-        {
+        {  
             Unknown,
             Refrigerator = 1,
             Vacuum = 2,
