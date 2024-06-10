@@ -59,6 +59,14 @@ namespace ModernAppliances.Entities
 
         public override string ToString()
         {
+            // Set voltage to high or low
+            string strBatteryVoltage = BatteryVoltage switch
+            {
+                18 => "Low",
+                24 => "High",
+                _ => "Any"
+            };
+
             string display =
                 string.Format("Item Number: {0}", ItemNumber) + "\n" +
                 string.Format("Brand: {0}", Brand) + "\n" +
@@ -67,7 +75,7 @@ namespace ModernAppliances.Entities
                 string.Format("Color: {0}", Color) + "\n" +
                 string.Format("Price: {0}", Price) + "\n" +
                 string.Format("Grade: {0}", Grade) + "\n" +
-                string.Format("Battery Voltage: {0}", BatteryVoltage);
+                string.Format("Battery Voltage: {0}", strBatteryVoltage);
 
             return display;
         }

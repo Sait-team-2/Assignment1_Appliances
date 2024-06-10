@@ -60,7 +60,7 @@ namespace ModernAppliances.Entities
         {
             this._doors = doors;
             this._width = width;
-            this._height = height;
+            this._height = height;           
         }
 
         public override string FormatForFile()
@@ -72,6 +72,16 @@ namespace ModernAppliances.Entities
         }
         public override string ToString()
         {
+            // Set doors to string
+            string noOfDoors = _doors switch
+            {
+                2 => "Double doors",
+                3 => "Three doors",
+                4 => "Four doors",
+                _ => "Any"
+            };
+
+            //Update some texts to be same with Assignment Document
             string display =
                 string.Format("Item Number: {0}", ItemNumber) + "\n" +
                 string.Format("Brand: {0}", Brand) + "\n" +
@@ -79,9 +89,10 @@ namespace ModernAppliances.Entities
                 string.Format("Wattage: {0}", Wattage) + "\n" +
                 string.Format("Color: {0}", Color) + "\n" +
                 string.Format("Price: {0}", Price) + "\n" +
-                string.Format("Doors: {0}", Doors) + "\n" +
-                string.Format("Width: {0}", Width) + "\n" +
-                string.Format("Height: {0}", Height);
+                string.Format("Number of Doors: {0}", noOfDoors) + "\n" +
+                string.Format("Height: {0}", Height) + "\n" +
+                string.Format("Width: {0}", Width);
+                // TODO: why is the width and height not getting the correct size
 
                 return display;
         }
