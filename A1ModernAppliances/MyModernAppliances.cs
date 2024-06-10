@@ -7,7 +7,7 @@ namespace ModernAppliances
     /// <summary>
     /// Manager class for Modern Appliances
     /// </summary>
-    /// <remarks>Author: Marian Estrada, Jose Ricardo Bastidas</remarks>
+    /// <remarks>Author: Marian Estrada, Jose Ricardo Bastidas, Amrit Reddy</remarks>
     /// <remarks>Date: June 6, 2024</remarks>
     internal class MyModernAppliances : ModernAppliances
     {
